@@ -25,5 +25,14 @@ pipeline{
                 }
             }
         }
+        post {
+          unstable {
+                echo "Send email notification implement in progress"
+              }
+          failure {
+                echo "Send email notification implement in progress"
+              }
+        }
+
     }
 }
