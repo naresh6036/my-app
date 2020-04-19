@@ -1,0 +1,23 @@
+pipeline{
+    agent any
+    stages{
+        stage('git checkout'){
+            steps{
+                git branch: 'master', 
+                    credentialsId: 'Github', 
+                    url: 'https://github.com/naresh6036/Terrafrom.git'
+            }
+        }
+        stage('Maven deploy'){
+            steps{
+                sh script: 'mvn deploy'
+            }
+        }
+         stage('Tomcat dev'){
+            steps{
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'tomcat-dev', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''/usr/sbin/service tomcat stop
+/usr/sbin/service tomcat start''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/opt/tomcat8/webapps/', remoteDirectorySDF: false, removePrefix: 'target', sourceFiles: 'target/cnar*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
+            }
+        }
+    }
+}
