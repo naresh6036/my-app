@@ -20,8 +20,8 @@ pipeline{
                     // -o StrictHostKeyChecking=no using for while transforming file one remote to another remote there should be a promt to say procced or yes we are automating tomcat_dev_ssh_agent
                     // -i we are using here y becoz sshagent(['tomcat_dev_ssh_agent']) while adding this ssh agent we alreadya added the pemfile of tomcat
                     sh "scp -o StrictHostKeyChecking=no project/Terraform/target/cnar*.war ec2-user@172.31.7.238:/opt/tomcat8/webapps/"
-                    sh "ssh ec2-user@172.31.7.238 service tomcat start"
-                    sh "ssh ec2-user@172.31.7.238 service tomcat stop"
+                    sh "ssh ec2-user@172.31.7.238 /usr/sbin/service tomcat stop"
+                    sh "ssh ec2-user@172.31.7.238 /usr/sbin/service tomcat start"
                 }
               }
             }
