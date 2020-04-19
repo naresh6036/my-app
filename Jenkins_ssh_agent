@@ -23,7 +23,6 @@ pipeline{
                     sh "ssh ec2-user@172.31.7.238 service tomcat start"
                     sh "ssh ec2-user@172.31.7.238 service tomcat stop"
                 }
-              }
             }
         }
     }
