@@ -25,11 +25,10 @@ pipeline{
                 }
             }
         }
-        post {
-        failure {
-                echo "Send email notification implement in progress"
-              }
-        }
-
+    }
+    post {
+    failure {
+            echo "Send email notification implement in progress"
+          }
     }
 }
