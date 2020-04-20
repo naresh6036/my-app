@@ -28,7 +28,14 @@ pipeline{
     }
     post {
     failure {
-            echo "Send email notification implement in progress"
+    body: '''Hi Naresh,
+
+    your jenkins build got failed. please check the staus.
+
+    Regards,
+    Naresh C''',
+     subject: 'Build failed',
+     to: 'naresh6036@gmail.com'
           }
     }
 }
