@@ -28,7 +28,7 @@ pipeline{
     }
     post {
           failure {
-              echo "need to setup"
+              mail bcc: '', body: 'Hi your jenkins build got failed', cc: '', from: '', replyTo: '', subject: 'Buid failed', to: 'naresh6036@gmail.com'
           }
     }
 }
