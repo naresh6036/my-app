@@ -29,7 +29,7 @@ pipeline{
     post {
           failure {
         // body: 'Hi Naresh  your Jenkins build got failed please check the status Regards Naresh C',
-        subject: 'Build failed',
+        subject: "Build failed",
         to: 'naresh6036@gmail.com'
           }
     }
