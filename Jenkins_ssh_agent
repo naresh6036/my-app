@@ -28,9 +28,7 @@ pipeline{
     }
     post {
         failure {
-        body: 'Hi Naresh  your jenkins build got failed. please check the staus Regards Naresh C',
-        subject: 'Build failed',
-        to: 'naresh6036@gmail.com'
+          mail bcc: '', body: 'Hi your jenkins build got failed', cc: '', from: '', replyTo: '', subject: 'Buid failed', to: 'naresh6036@gmail.com'
           }
     }
 }
