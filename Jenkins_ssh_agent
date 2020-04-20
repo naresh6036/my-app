@@ -10,7 +10,7 @@ pipeline{
         }
         stage('Maven deploy'){
             steps{
-                sh script: 'mvn deploy'
+                sh script: 'mvn deploy cnar'
             }
         }
          stage('Tomcat dev'){
