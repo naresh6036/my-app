@@ -6,19 +6,19 @@ pipeline{
       Tomcat_Svc="/usr/sbin/service"
     }
     parameters {
-            choice choices: ['DEV', 'ITG', 'PROD'], description: 'Choose env to deploy ', name: 'Deploy ENV'
-            choice choices: ['develop', 'release', 'master'], description: 'Choose env to deploy ', name: 'Deploy branch'
+            choice choices: ['DEV', 'ITG', 'PROD'], description: 'Choose env to deploy ', name: 'DeployENV'
+            choice choices: ['develop', 'release', 'master'], description: 'Choose env to deploy ', name: 'Deploybranch'
                 }
     stages{
         stage('Maven package'){
             steps{
                 //sh script: 'mvn package'
-                echo "we are selecting code form ${params.Deploy branch}"
+                echo "we are selecting code form ${params.Deploybranch}"
             }
         }
          stage('Tomcat deploy'){
             steps{
-                echo "we are deploying from ${params.Deploy ENV} environment"
+                echo "we are deploying from ${params.DeployENV} environment"
                 }
             }
         }
