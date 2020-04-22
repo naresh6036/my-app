@@ -1,0 +1,25 @@
+currentBuild.displayName= "${currentBuild.projectName} - #${currentBuild.number}"
+pipeline{
+    agent any
+    environment{
+      Tomcat_Host="ec2-user@172.31.7.238"
+      Tomcat_Svc="/usr/sbin/service"
+    }
+    parameters {
+            choice choices: ['DEV', 'ITG', 'PROD'], description: 'Choose env to deploy ', name: 'Deploy ENV'
+            choice choices: ['develop', 'release', 'master'], description: 'Choose env to deploy ', name: 'Deploy branch'
+                }
+    stages{
+        stage('Maven package'){
+            steps{
+                //sh script: 'mvn package'
+                echo "we are selecting code form ${params.Deploy branch}"
+            }
+        }
+         stage('Tomcat deploy'){
+            steps{
+                echo "we are deploying from ${params.Deploy ENV} environment"
+                }
+            }
+        }
+    }
