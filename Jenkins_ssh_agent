@@ -33,7 +33,7 @@ pipeline{
     post {
           failure {
               mail bcc: '',
-              body: 'Hi your jenkins build got failed'${env.JENKINS_URL},
+              body: "Hi your jenkins build got failed ${env.JENKINS_URL}",
                cc: '',
                from: '', replyTo: '',
                subject: "${env.JOB_NAME}Buid failed",
