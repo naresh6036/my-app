@@ -1,4 +1,4 @@
-serversMap = [dev: "172.13.4.5",stg: "172.13.4.6", prod: "172.13.4.7"]
+serversMap = [DEV: "172.13.4.5",ITG: "172.13.4.6", PROD: "172.13.4.7"]
 
 currentBuild.displayName= "${currentBuild.projectName} - #${currentBuild.number}"
 pipeline{
