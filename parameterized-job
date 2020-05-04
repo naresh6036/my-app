@@ -1,3 +1,5 @@
+serversMap = [dev: "172.13.4.5",stg: "172.13.4.6", prod: "172.13.4.7"]
+
 currentBuild.displayName= "${currentBuild.projectName} - #${currentBuild.number}"
 pipeline{
     agent any
@@ -16,10 +18,29 @@ pipeline{
                 echo "we are selecting code form ${params.Deploybranch}"
             }
         }
-         stage('Tomcat deploy'){
+         stage('Tomcat deploy - Dev'){
+            when{
+                expression { params.DeployENV == 'DEV' }
+            }
             steps{
-                echo "we are deploying to ${params.DeployENV} environment"
+                echo "we are deploying to ${serversMap[params.DeployENV]} environment"
                 }
             }
+          stage('Tomcat deploy - ITG'){
+               when{
+                   expression { params.DeployENV == 'ITG' }
+               }
+               steps{
+                   echo "we are deploying to ${serversMap[params.DeployENV]} environment"
+                   }
+               }
+          stage('Tomcat deploy - PROD'){
+              when{
+                expression { params.DeployENV == 'PROD' }
+              }
+            steps{
+                echo "we are deploying to ${serversMap[params.DeployENV]} environment"
+              }
+          }
         }
     }
