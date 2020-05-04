@@ -23,7 +23,7 @@ pipeline{
                 expression { params.DeployENV == 'DEV' }
             }
             steps{
-                echo "we are deploying to ${serversMap[params.DeployENV]} environment"
+                echo "we are deploying to DEV env with ip of ${serversMap[params.DeployENV]} environment"
                 }
             }
           stage('Tomcat deploy - ITG'){
@@ -31,7 +31,7 @@ pipeline{
                    expression { params.DeployENV == 'ITG' }
                }
                steps{
-                   echo "we are deploying to ${serversMap[params.DeployENV]} environment"
+                   echo "we are deploying to ITG env with ip of ${serversMap[params.DeployENV]} environment"
                    }
                }
           stage('Tomcat deploy - PROD'){
@@ -39,7 +39,7 @@ pipeline{
                 expression { params.DeployENV == 'PROD' }
               }
             steps{
-                echo "we are deploying to ${serversMap[params.DeployENV]} environment"
+                echo "we are deploying to PROD env with ip of ${serversMap[params.DeployENV]} environment"
               }
           }
         }
