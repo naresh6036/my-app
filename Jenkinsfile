@@ -18,7 +18,7 @@ node {
 	 }
       
    }
-   hi
+   
 	
    stage('Mvn Package'){
 	   // Build using maven
